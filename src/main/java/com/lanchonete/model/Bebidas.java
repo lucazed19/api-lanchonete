@@ -34,7 +34,7 @@ public class Bebidas {
 	@Enumerated(EnumType.STRING) // Será que esses enums são realmente necessários?
 	private TipoBebidas tipoBebida;
 
-	private void setTipoBebida(TipoBebidas tipoBebida) {
+	private void setTipoBebidas(TipoBebidas tipoBebida) {
 		this.tipoBebida = tipoBebida;
 	}
 
@@ -71,7 +71,7 @@ public class Bebidas {
 		this.marca = marca;
 	}
 
-	public TipoBebidas getTipoBebida() { // n sei se isso ta certo
+	public TipoBebidas getTipoBebidas() { // n sei se isso ta certo
 		return tipoBebida;
 	}
 
