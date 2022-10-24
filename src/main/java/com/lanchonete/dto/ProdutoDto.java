@@ -3,7 +3,6 @@ package com.lanchonete.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.lanchonete.model.TipoProduto;
 
 
 public class ProdutoDto {
@@ -15,7 +14,7 @@ public class ProdutoDto {
 	@NotNull
 	private double valor;
 	@NotNull
-	private TipoProduto tipo;
+//	private TipoProduto tipo;
 	
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -35,10 +34,10 @@ public class ProdutoDto {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	public TipoProduto getTipo() {
-		return tipo;
-	}
-	public void setTipo(TipoProduto tipo) {
-		this.tipo = tipo;
-	}
+//	public TipoProduto getTipo() {
+//		return tipo;
+//	}
+//	public void setTipo(TipoProduto tipo) {
+//		this.tipo = tipo;
+//	}
 }
