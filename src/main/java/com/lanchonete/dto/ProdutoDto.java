@@ -3,7 +3,7 @@ package com.lanchonete.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.lanchonete.model.TipoProduto;
+import com.lanchonete.model.enums.TipoProduto;
 
 
 public class ProdutoDto {

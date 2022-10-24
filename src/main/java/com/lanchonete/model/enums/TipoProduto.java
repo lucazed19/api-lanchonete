@@ -1,4 +1,4 @@
-package com.lanchonete.model;
+package com.lanchonete.model.enums;
 
 public enum TipoProduto {
 	BEBIDA("bebida"),

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.lanchonete.model.enums.TipoProduto;
+
 @Entity
 @Table(name="produtos")
 public class Produto {
