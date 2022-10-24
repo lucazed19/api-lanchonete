@@ -7,9 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.lanchonete.model.enums.TipoBebida;
+import com.lanchonete.model.enums.TipoBebidas;
 
-public class Bebida {
+public class Bebidas {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +32,9 @@ public class Bebida {
 	 */
 
 	@Enumerated(EnumType.STRING) // Será que esses enums são realmente necessários?
-	private TipoBebida tipoBebida;
+	private TipoBebidas tipoBebida;
 
-	private void setTipoBebida(TipoBebida tipoBebida) {
+	private void setTipoBebida(TipoBebidas tipoBebida) {
 		this.tipoBebida = tipoBebida;
 	}
 
@@ -71,7 +71,7 @@ public class Bebida {
 		this.marca = marca;
 	}
 
-	public TipoBebida getTipoBebida() { // n sei se isso ta certo
+	public TipoBebidas getTipoBebida() { // n sei se isso ta certo
 		return tipoBebida;
 	}
 
