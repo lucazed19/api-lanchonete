@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,16 +22,16 @@ public class Pedido {
 	@Column(name="valor_total", nullable=false)
 	private double valorTotal;
 	
-	@ManyToMany(targetEntity = Bebida.class, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Bebida.class, cascade = CascadeType.ALL)
 	private List<Bebida> bebida;
 	
-	@ManyToMany(targetEntity = Doce.class, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Doce.class, cascade = CascadeType.ALL)
 	private List<Doce> doce;
 	
-	@ManyToMany (targetEntity = Salgado.class, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Salgado.class, cascade = CascadeType.ALL)
 	private List<Salgado> salgado;
 	
-	@OneToMany (targetEntity = Funcionario.class, cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = Funcionario.class, cascade = CascadeType.ALL)
 	private Funcionario funcionario;
 	
 	//Fiz alterações nas notations, de acordo com o modelo conceitual do banco

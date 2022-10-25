@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lanchonete.model.Bebida;
-import com.lanchonete.model.Pedido;
 import com.lanchonete.repository.BebidaRepository;
 
 @RestController
