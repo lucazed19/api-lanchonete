@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lanchonete.model.Bebida;
+import com.lanchonete.model.Pedido;
 import com.lanchonete.repository.BebidaRepository;
 
 @RestController
@@ -48,4 +50,14 @@ public class BebidaController {
 		BeanUtils.copyProperties(bebidaDto, bebida);
 		return bebidaRepository.save(bebida);
 	}
+	
+	@DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletePedido(@PathVariable(name = "id") long id) {
+        Optional<Bebida> pedidoOptional = bebidaRepository.findById(id);
+        if (!pedidoOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");
+        }
+        bebidaRepository.delete(pedidoOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Bebida deleted successfully");
+    }
 }
