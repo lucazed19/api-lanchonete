@@ -35,20 +35,16 @@ import com.lanchonete.repository.SalgadoRepository;
 @CrossOrigin(origins="*", maxAge=3600)
 @RequestMapping("/pedidos")
 public class PedidosController {
-	@Autowired 
-	private DoceRepository doceRepository;
-	@Autowired
-	private SalgadoRepository salgadoRepository;
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
 	
-	@GetMapping("/pedidos")
+	@GetMapping
 	public List<Pedido> listPedidos() {
 		return pedidoRepository.findAll();
 	}
 	
-	@GetMapping("/pedidos/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOnePedido(@PathVariable(name="id")long id) {
 		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
 		if (!pedidoOptional.isPresent()) {
@@ -57,7 +53,7 @@ public class PedidosController {
 		return ResponseEntity.status(HttpStatus.OK).body(pedidoOptional.get());
 	}
 	
-	@PostMapping("/pedidos")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Pedido addPedido(@RequestBody @Valid Pedido pedidoDto) {
 		Pedido pedido= new Pedido();
@@ -65,7 +61,7 @@ public class PedidosController {
 		return pedidoRepository.save(pedido);
 	}
 	
-	@DeleteMapping("/pedidos/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePedido(@PathVariable(name="id")long id) {
 		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
 		if (!pedidoOptional.isPresent()) {
