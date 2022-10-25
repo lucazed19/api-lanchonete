@@ -26,11 +26,12 @@ import com.lanchonete.repository.ProdutoRepository;
 
 
 @RestController
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins="*", maxAge=3600)//cache sem timeout gera sobrecarga
 @RequestMapping("/produtos")
 public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
 	
 	@GetMapping
 	public List<Produto> list() {
@@ -46,7 +47,7 @@ public class ProdutoController {
 		return ResponseEntity.status(HttpStatus.OK).body(produtoOptional.get());
 	}
 	
-	@PostMapping
+	@PostMapping //por isso q ele falou q isso a relação do ProdutoDto com o http era só uma questão de segurança
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto add(@RequestBody @Valid ProdutoDto produtoDto) {
 		Produto produto = new Produto();
