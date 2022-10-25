@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,5 +30,8 @@ public class Pedido {
 	
 	@OneToMany(targetEntity = Salgado.class, cascade = CascadeType.ALL)
 	private List<Salgado> salgado;
+	
+	@OneToOne(targetEntity = Funcionario.class, cascade = CascadeType.ALL)
+	private Funcionario funcionario;
 
 }

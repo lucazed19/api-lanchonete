@@ -17,27 +17,15 @@ public class Salgado {
 	@Column(name = "nome_salgado")
 	private String nomeSalgado;
 	
-	@Column(name= "quantidade")
-	private int quantidade;
-	
 	@Column(name="valor")
 	private double valor;
 	
 	public Salgado() {}
 
-	public Salgado(String nomeSalgado, int quantidade, double valor) {
+	public Salgado(String nomeSalgado, double valor) {
 		super();
 		this.nomeSalgado = nomeSalgado;
-		this.quantidade = quantidade;
 		this.valor = valor;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public long getId() {

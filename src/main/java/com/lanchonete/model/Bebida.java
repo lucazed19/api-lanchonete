@@ -17,18 +17,14 @@ public class Bebida {
 	@Column(name = "nome_bebida")
 	private String nomeBebida;
 	
-	@Column(name="quantidade")
-	private int quantidade;
-	
 	@Column(name="valor")
 	private double valor;
 	
 	public Bebida() {}
 	
-	public Bebida(String nomeBebida, int quantidade, double valor) {
+	public Bebida(String nomeBebida, double valor) {
 		super();
 		this.nomeBebida = nomeBebida;
-		this.quantidade = quantidade;
 		this.valor = valor;
 	}
 
@@ -38,14 +34,6 @@ public class Bebida {
 
 	public void setNomeBebida(String nomeBebida) {
 		this.nomeBebida = nomeBebida;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public double getValor() {

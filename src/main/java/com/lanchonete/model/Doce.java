@@ -17,28 +17,15 @@ public class Doce {
 	@Column(name = "nome_doce")
 	private String nomeDoce;
 	
-	@Column(name= "quantidade")
-	private int quantidade;
-	
 	@Column(name="valor")
 	private double valor;
 	
 	public Doce() {}
 
-	public Doce(String nomeDoce, int quantidade, double valor) {
+	public Doce(String nomeDoce, double valor) {
 		super();
 		this.nomeDoce = nomeDoce;
-		this.quantidade = quantidade;
 		this.valor = valor;
-	}
-
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public long getId() {
