@@ -22,9 +22,6 @@ public class Pedido {
 	@Column(name="valor_total", nullable=false)
 	private double valorTotal;
 	
-	@Column(name="descricao")
-	private String descricao;
-	
 	@OneToMany(targetEntity = Bebida.class, cascade = CascadeType.ALL)
 	private List<Bebida> bebida;
 	
@@ -39,11 +36,9 @@ public class Pedido {
 	
 	public Pedido() {}
 
-	public Pedido(double valorTotal, String descricao, List<Bebida> bebida, List<Doce> doce, List<Salgado> salgado,
-			Funcionario funcionario) {
+	public Pedido(double valorTotal, List<Bebida> bebida, List<Doce> doce, List<Salgado> salgado,Funcionario funcionario) {
 		super();
 		this.valorTotal = valorTotal;
-		this.descricao = descricao;
 		this.bebida = bebida;
 		this.doce = doce;
 		this.salgado = salgado;
@@ -64,14 +59,6 @@ public class Pedido {
 
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public List<Bebida> getBebida() {

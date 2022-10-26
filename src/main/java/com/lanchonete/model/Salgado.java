@@ -20,12 +20,25 @@ public class Salgado {
 	@Column(name="valor")
 	private double valor;
 	
+	@Column(name="descricao")
+	private String descricao;
+	
 	public Salgado() {}
 
-	public Salgado(String nomeSalgado, double valor) {
+	public Salgado(String nomeSalgado, double valor, String descricao) {
 		super();
 		this.nomeSalgado = nomeSalgado;
 		this.valor = valor;
+		this.descricao = descricao;
+	}
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public long getId() {
