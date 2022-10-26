@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -48,5 +50,29 @@ public class DoceController {
 		Doce doce= new Doce();
 		BeanUtils.copyProperties(doceDto, doce);
 		return doceRepository.save(doce);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Doce doce){
+		Optional<Doce> doceOptional = doceRepository.findById(id);
+		if (!doceOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found");
+		}
+		
+		Doce doceUpdt = new Doce();
+		BeanUtils.copyProperties(doce, doceUpdt);
+		doceUpdt.setId(doceOptional.get().getId());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(doceRepository.save(doceUpdt));
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> delete(@PathVariable(name="id")long id) {
+		Optional<Doce> doceOptional = doceRepository.findById(id);
+		if (!doceOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doce not found");
+		}
+		doceRepository.delete(doceOptional.get());
+		return ResponseEntity.status(HttpStatus.OK).body("Doce deleted successfully");
 	}
 }

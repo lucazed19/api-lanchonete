@@ -20,15 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lanchonete.dto.ProdutoDto;
-import com.lanchonete.model.Bebida;
-import com.lanchonete.model.Doce;
 import com.lanchonete.model.Pedido;
-import com.lanchonete.model.Salgado;
-import com.lanchonete.repository.BebidaRepository;
-import com.lanchonete.repository.DoceRepository;
 import com.lanchonete.repository.PedidoRepository;
-import com.lanchonete.repository.SalgadoRepository;
 
 
 @RestController
@@ -61,6 +54,20 @@ public class PedidosController {
 		return pedidoRepository.save(pedido);
 	}
 	
+	@PutMapping("/{id}")
+	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Pedido pedido){
+		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+		if (!pedidoOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido not found");
+		}
+		
+		Pedido pedidoUpdt = new Pedido();
+		BeanUtils.copyProperties(pedido, pedidoUpdt);
+		pedidoUpdt.setId(pedidoOptional.get().getId());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(pedidoRepository.save(pedidoUpdt));
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePedido(@PathVariable(name="id")long id) {
 		Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
@@ -70,31 +77,5 @@ public class PedidosController {
 		pedidoRepository.delete(pedidoOptional.get());
 		return ResponseEntity.status(HttpStatus.OK).body("Pedido deleted successfully");
 	}
-	
-	
-//	
-//	@DeleteMapping("/{id}")
-//	public ResponseEntity<Object> delete(@PathVariable(name="id")long id) {
-//		Optional<Produto> produtoOptional = produtoRepository.findById(id);
-//		if (!produtoOptional.isPresent()) {
-//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto not found");
-//		}
-//		produtoRepository.delete(produtoOptional.get());
-//		return ResponseEntity.status(HttpStatus.OK).body("Produto deleted successfully");
-//	}
-//	
-//	@PutMapping("/{id}")
-//	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid ProdutoDto produtoDto){
-//		Optional<Produto> produtoOptional = produtoRepository.findById(id);
-//		if (!produtoOptional.isPresent()) {
-//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto not found");
-//		}
-//		
-//		Produto produto = new Produto();
-//		BeanUtils.copyProperties(produtoDto, produto);
-//		produto.setId(produtoOptional.get().getId());
-//		
-//		return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto));
-//	}
 	
 }
