@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 @Entity
 @Table(name="bebidas")
 public class Bebida {
@@ -18,6 +21,7 @@ public class Bebida {
 	private String nomeBebida;
 	
 	@Column(name="valor")
+	@NumberFormat(style = Style.NUMBER ,pattern = "#.###,##")
 	private double valor;
 	
 	@Column(name="descricao")

@@ -1,16 +1,18 @@
 package com.lanchonete.model;
 
+
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
 @Table(name="pedidos")
@@ -20,28 +22,31 @@ public class Pedido {
 	private long id;
 	
 	@Column(name="valor_total", nullable=false)
+	@NumberFormat(style = Style.CURRENCY,pattern = "#.###,##")
 	private double valorTotal;
 	
-	@OneToMany(targetEntity = Bebida.class, cascade = CascadeType.ALL)
-	private List<Bebida> bebida;
+	@Column(name="bebidas")
+    @ElementCollection(targetClass=String.class)
+	private List<String> bebidas;
 	
-	@OneToMany(targetEntity = Doce.class, cascade = CascadeType.ALL)
-	private List<Doce> doce;
+	@Column(name="doces")
+    @ElementCollection(targetClass=String.class)
+	private List<String> doces;
 	
-	@OneToMany(targetEntity = Salgado.class, cascade = CascadeType.ALL)
-	private List<Salgado> salgado;
+	@Column(name="salgados")
+    @ElementCollection(targetClass=String.class)
+	private List<String> salgados;
 	
-	@OneToOne(targetEntity = Funcionario.class, cascade = CascadeType.ALL)
-	private Funcionario funcionario;
+	private String funcionario;
 	
 	public Pedido() {}
 
-	public Pedido(double valorTotal, List<Bebida> bebida, List<Doce> doce, List<Salgado> salgado,Funcionario funcionario) {
+	public Pedido(double valorTotal, List<String> bebidas, List<String> doces, List<String> salgados, String funcionario) {
 		super();
 		this.valorTotal = valorTotal;
-		this.bebida = bebida;
-		this.doce = doce;
-		this.salgado = salgado;
+		this.bebidas = bebidas;
+		this.doces = doces;
+		this.salgados = salgados;
 		this.funcionario = funcionario;
 	}
 
@@ -61,40 +66,35 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 	}
 
-	public List<Bebida> getBebida() {
-		return bebida;
+	public List<String> getBebida() {
+		return bebidas;
 	}
 
-	public void setBebida(List<Bebida> bebida) {
-		this.bebida = bebida;
+	public void setBebida(List<String> bebida) {
+		this.bebidas = bebida;
 	}
 
-	public List<Doce> getDoce() {
-		return doce;
+	public List<String> getDoce() {
+		return doces;
 	}
 
-	public void setDoce(List<Doce> doce) {
-		this.doce = doce;
+	public void setDoce(List<String> doce) {
+		this.doces = doce;
 	}
 
-	public List<Salgado> getSalgado() {
-		return salgado;
+	public List<String> getSalgado() {
+		return salgados;
 	}
 
-	public void setSalgado(List<Salgado> salgado) {
-		this.salgado = salgado;
+	public void setSalgado(List<String> salgado) {
+		this.salgados = salgado;
 	}
 
-	public Funcionario getFuncionario() {
+	public String getFuncionario() {
 		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario funcionario) {
+	public void setFuncionario(String funcionario) {
 		this.funcionario = funcionario;
-	}
-	
-	
-	
-	
-
+	}	
 }
