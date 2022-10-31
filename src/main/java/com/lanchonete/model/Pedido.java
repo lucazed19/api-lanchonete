@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.NumberFormat;
@@ -22,18 +23,17 @@ public class Pedido {
 	private long id;
 	
 	@Column(name="valor_total", nullable=false)
-	@NumberFormat(style = Style.CURRENCY,pattern = "#.###,##")
 	private double valorTotal;
 	
-	@Column(name="bebidas")
+	@JoinColumn(name="bebidas")
     @ElementCollection(targetClass=String.class)
 	private List<String> bebidas;
 	
-	@Column(name="doces")
+	@JoinColumn(name="doces")
     @ElementCollection(targetClass=String.class)
 	private List<String> doces;
 	
-	@Column(name="salgados")
+	@JoinColumn(name="salgados")
     @ElementCollection(targetClass=String.class)
 	private List<String> salgados;
 	
