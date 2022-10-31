@@ -23,34 +23,35 @@ import com.lanchonete.model.Bebida;
 import com.lanchonete.repository.BebidaRepository;
 
 @RestController
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/bebidas")
 public class BebidaController {
-	@Autowired BebidaRepository bebidaRepository;
-	
-	@GetMapping
-	public List<Bebida> listBebida() {
-		return bebidaRepository.findAll();
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOneBebida(@PathVariable(name="id")long id) {
-		Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
-		if (!bebidaOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(bebidaOptional.get());
-	}
-	
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public Bebida addBebida(@RequestBody @Valid Bebida bebidaDto) {
-		Bebida bebida= new Bebida();
-		BeanUtils.copyProperties(bebidaDto, bebida);
-		return bebidaRepository.save(bebida);
-	}
-	
-	@DeleteMapping("/{id}")
+    @Autowired
+    BebidaRepository bebidaRepository;
+
+    @GetMapping("/bebidas/get-all")
+    public List<Bebida> listBebida() {
+        return bebidaRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getOneBebida(@PathVariable(name = "id") long id) {
+        Optional<Bebida> bebidaOptional = bebidaRepository.findById(id);
+        if (!bebidaOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bebida not found");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(bebidaOptional.get());
+    }
+
+    @PostMapping("/bebidas/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Bebida addBebida(@RequestBody @Valid Bebida bebidaDto) {
+        Bebida bebida = new Bebida();
+        BeanUtils.copyProperties(bebidaDto, bebida);
+        return bebidaRepository.save(bebida);
+    }
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletePedido(@PathVariable(name = "id") long id) {
         Optional<Bebida> pedidoOptional = bebidaRepository.findById(id);
         if (!pedidoOptional.isPresent()) {
