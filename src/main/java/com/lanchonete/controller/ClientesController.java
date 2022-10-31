@@ -20,26 +20,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lanchonete.model.Bebida;
-import com.lanchonete.model.Funcionario;
-import com.lanchonete.model.Pedido; 
-import com.lanchonete.repository.FuncionarioRepository;
+import com.lanchonete.model.Clientes;
+import com.lanchonete.repository.ClienteRepository;
+
 
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
-@RequestMapping("/funcionarios")
-public class FuncionarioController {
-	@Autowired
-	private FuncionarioRepository funcionarioRepository;
+@RequestMapping("/clientes")
+
+public class ClientesController {
+    
+    @Autowired
+	private ClienteRepository clienteRepository;
 	
 	@GetMapping
-	public List<Funcionario> listPedidos() {
-		return funcionarioRepository.findAll();
+	public List<Clientes> listPedidos() {
+		return clienteRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOnePedido(@PathVariable(name="id")long id) {
-		Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
+		Optional<Clientes> funcionarioOptional = clienteRepository.findById(id);
 		if (!funcionarioOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found");
 		}
@@ -48,31 +49,31 @@ public class FuncionarioController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Funcionario addPedido(@RequestBody @Valid Funcionario funcionario) {
-		return funcionarioRepository.save(funcionario);
+	public Clientes addPedido(@RequestBody @Valid Clientes cliente) {
+		return clienteRepository.save(cliente);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Funcionario funcionario){
-		Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
-		if (!funcionarioOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found");
+	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Clientes cliente){
+		Optional<Clientes> clienteOptional = clienteRepository.findById(id);
+		if (!clienteOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found");
 		}
 		
-		Funcionario funcionarioUpdt = new Funcionario();
-		BeanUtils.copyProperties(funcionario, funcionarioUpdt);
-		funcionarioUpdt.setId(funcionarioOptional.get().getId());
+		Clientes clienteUpdt = new Clientes();
+		BeanUtils.copyProperties(cliente, clienteUpdt);
+		clienteUpdt.setId(clienteOptional.get().getId());
 		
-		return ResponseEntity.status(HttpStatus.OK).body(funcionarioRepository.save(funcionarioUpdt));
+		return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(clienteUpdt));
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePedido(@PathVariable(name="id")long id) {
-		Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
-		if (!funcionarioOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found");
+		Optional<Clientes> clienteOptional =clienteRepository.findById(id);
+		if (!clienteOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found");
 		}
-		funcionarioRepository.delete(funcionarioOptional.get());
+		clienteRepository.delete(clienteOptional.get());
 		return ResponseEntity.status(HttpStatus.OK).body("Pedido deleted successfully");
 	}
 

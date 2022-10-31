@@ -7,9 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.NumberFormat;
-import org.springframework.format.annotation.NumberFormat.Style;
-
 @Entity
 @Table(name="doces")
 public class Doce {
@@ -21,7 +18,6 @@ public class Doce {
 	private String nomeDoce;
 	
 	@Column(name="valor")
-	@NumberFormat(style = Style.CURRENCY,pattern = "#.###,##")
 	private double valor;
 	
 	@Column(name="descricao")
