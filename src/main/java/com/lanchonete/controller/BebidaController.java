@@ -23,7 +23,7 @@ import com.lanchonete.model.Bebida;
 import com.lanchonete.repository.BebidaRepository;
 
 @RestController
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/bebidas")
 public class BebidaController {
 	@Autowired BebidaRepository bebidaRepository;
