@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 @Entity
 @Table(name="salgados")
 public class Salgado {
@@ -18,14 +21,28 @@ public class Salgado {
 	private String nomeSalgado;
 	
 	@Column(name="valor")
+	@NumberFormat(style = Style.CURRENCY,pattern = "#.###,##")
 	private double valor;
+	
+	@Column(name="descricao")
+	private String descricao;
 	
 	public Salgado() {}
 
-	public Salgado(String nomeSalgado, double valor) {
+	public Salgado(String nomeSalgado, double valor, String descricao) {
 		super();
 		this.nomeSalgado = nomeSalgado;
 		this.valor = valor;
+		this.descricao = descricao;
+	}
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public long getId() {
