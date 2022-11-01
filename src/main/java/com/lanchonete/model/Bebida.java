@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
@@ -18,16 +19,19 @@ public class Bebida {
 	private long id;
 	
 	@Column(name = "nome_bebida")
+	@NotNull
 	private String nomeBebida;
 	
 	@Column(name="valor")
 	@NumberFormat(style = Style.NUMBER ,pattern = "#.###,##")
+	@NotNull
 	private double valor;
 	
 	@Column(name="descricao")
 	private String descricao;
 	
 	@Column(name="imagem")
+	@NotNull
 	private String imagem;
 	
 	public Bebida() {}

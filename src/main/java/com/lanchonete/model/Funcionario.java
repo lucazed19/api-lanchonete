@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="funcionarios")
@@ -15,9 +16,11 @@ public class Funcionario {
 	private long id;
 	
 	@Column(name = "nome_funcionario")
+	@NotNull
 	private String nomeFuncionario;
 	
 	@Column(name="imagem")
+	@NotNull
 	private String imagem;
 	
 	public Funcionario() {}
