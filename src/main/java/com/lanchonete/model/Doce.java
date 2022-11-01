@@ -31,7 +31,6 @@ public class Doce {
 	private String descricao;
 	
 	@Column(name="imagem")
-	@NotNull
 	private String imagem;
 	
 	public Doce() {}

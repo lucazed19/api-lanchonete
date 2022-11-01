@@ -37,17 +37,32 @@ public class Pedido {
     @ElementCollection(targetClass=String.class)
 	private List<String> salgados;
 	
+	@Column(name="funcionario")
 	private String funcionario;
+	
+	@Column(name="cliente")
+	private String cliente;
 	
 	public Pedido() {}
 
-	public Pedido(double valorTotal, List<String> bebidas, List<String> doces, List<String> salgados, String funcionario) {
+	public Pedido(double valorTotal, List<String> bebidas, List<String> doces, List<String> salgados, String funcionario, String cliente) {
 		super();
 		this.valorTotal = valorTotal;
 		this.bebidas = bebidas;
 		this.doces = doces;
 		this.salgados = salgados;
 		this.funcionario = funcionario;
+		this.cliente = cliente;
+	}
+	
+	
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
 
 	public long getId() {
