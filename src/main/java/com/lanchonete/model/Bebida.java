@@ -27,15 +27,27 @@ public class Bebida {
 	@Column(name="descricao")
 	private String descricao;
 	
+	@Column(name="imagem")
+	private String imagem;
+	
 	public Bebida() {}
 	
-	public Bebida(String nomeBebida, double valor, String descricao) {
+	public Bebida(String nomeBebida, double valor, String descricao, String imagem) {
 		super();
 		this.nomeBebida = nomeBebida;
 		this.valor = valor;
 		this.descricao = descricao;
+		this.imagem = imagem;
 	}
-	
+
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 
 	public String getDescricao() {
 		return descricao;

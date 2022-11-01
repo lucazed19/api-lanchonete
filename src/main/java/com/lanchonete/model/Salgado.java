@@ -27,15 +27,26 @@ public class Salgado {
 	@Column(name="descricao")
 	private String descricao;
 	
+	@Column(name="imagem")
+	private String imagem;
+	
 	public Salgado() {}
 
-	public Salgado(String nomeSalgado, double valor, String descricao) {
+	public Salgado(String nomeSalgado, double valor, String descricao, String imagem) {
 		super();
 		this.nomeSalgado = nomeSalgado;
 		this.valor = valor;
 		this.descricao = descricao;
+		this.imagem = imagem;
 	}
 	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 
 	public String getDescricao() {
 		return descricao;

@@ -17,11 +17,23 @@ public class Funcionario {
 	@Column(name = "nome_funcionario")
 	private String nomeFuncionario;
 	
+	@Column(name="imagem")
+	private String imagem;
+	
 	public Funcionario() {}
 
-	public Funcionario(String nomeFuncionario) {
+	public Funcionario(String nomeFuncionario, String imagem) {
 		super();
 		this.nomeFuncionario = nomeFuncionario;
+		this.imagem = imagem;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	public long getId() {
