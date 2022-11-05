@@ -13,7 +13,7 @@ import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
 @Table(name="bebidas")
-public class Bebida {
+public class Bebida { //interessante
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
