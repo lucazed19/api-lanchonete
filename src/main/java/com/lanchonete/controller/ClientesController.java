@@ -25,7 +25,7 @@ import com.lanchonete.repository.ClienteRepository;
 
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
-@RequestMapping("/clientes")
+@RequestMapping("/cliente")
 public class ClientesController {
 	
 
