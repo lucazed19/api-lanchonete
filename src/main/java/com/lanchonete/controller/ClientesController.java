@@ -33,7 +33,7 @@ public class ClientesController {
 	private ClienteRepository clienteRepository;
 	
 	@GetMapping
-	public List<Clientes> listPedidos() {
+	public List<Clientes> listClientes() {
 		return clienteRepository.findAll();
 	}
 	
@@ -48,8 +48,8 @@ public class ClientesController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Clientes addPedido(@RequestBody @Valid Clientes cliente) {
-		return clienteRepository.save(cliente);
+	public Clientes addClientes(@RequestBody @Valid Clientes clientesDto) {
+		return clienteRepository.save(clientesDto);
 	}
 	
 	@PutMapping("/{id}")
