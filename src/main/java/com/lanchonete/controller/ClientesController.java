@@ -25,7 +25,7 @@ import com.lanchonete.repository.ClienteRepository;
 
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
-@RequestMapping("/cliente")
+@RequestMapping("/cliente") //Ta no singular aqui mas n faz sentido. Ou dx tudo no plural ou tudo no singular
 public class ClientesController {
 	
 

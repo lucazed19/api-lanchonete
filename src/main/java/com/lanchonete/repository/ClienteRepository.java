@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.lanchonete.model.Clientes;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Clientes, Long> {
+public interface ClienteRepository extends JpaRepository<Clientes, Long> { //se der pra escolher entre plural ou singular aqui tbm seria interessante.
 
 }
