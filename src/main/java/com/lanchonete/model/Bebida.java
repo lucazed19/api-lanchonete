@@ -44,8 +44,8 @@ public class Bebida { //interessante
 	}
 
 
-	public String getImagem() {
-		return imagem;
+	public String getImagem() { //se eu n adicionar esse recurso de construção no get, eu n vou conseguir acessar pelo android
+		return "https://funcionarios-lanchonete.vercel.app/" + imagem;
 	}
 
 	public void setImagem(String imagem) {

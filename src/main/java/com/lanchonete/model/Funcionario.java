@@ -32,7 +32,7 @@ public class Funcionario {
 	}
 
 	public String getImagem() {
-		return imagem;
+		return "https://funcionarios-lanchonete.vercel.app/" + imagem;
 	}
 
 	public void setImagem(String imagem) {
