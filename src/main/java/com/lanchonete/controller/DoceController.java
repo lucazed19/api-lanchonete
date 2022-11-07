@@ -24,7 +24,7 @@ import com.lanchonete.model.Doce;
 import com.lanchonete.repository.DoceRepository;
 
 @RestController
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/doces")
 public class DoceController {
 	@Autowired

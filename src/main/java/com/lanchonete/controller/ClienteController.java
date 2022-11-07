@@ -20,26 +20,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lanchonete.model.Clientes;
+import com.lanchonete.model.Cliente;
 import com.lanchonete.repository.ClienteRepository;
 
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
-@RequestMapping("/clientes")
-public class ClientesController {
+@RequestMapping("/clientes") //Ta no singular aqui mas n faz sentido. Ou dx tudo no plural ou tudo no singular
+public class ClienteController {
 	
 
     @Autowired
 	private ClienteRepository clienteRepository;
 	
 	@GetMapping
-	public List<Clientes> listPedidos() {
+	public List<Cliente> listCliente() {
 		return clienteRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOnePedido(@PathVariable(name="id")long id) {
-		Optional<Clientes> funcionarioOptional = clienteRepository.findById(id);
+		Optional<Cliente> funcionarioOptional = clienteRepository.findById(id);
 		if (!funcionarioOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionario not found");
 		}
@@ -48,18 +48,18 @@ public class ClientesController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Clientes addPedido(@RequestBody @Valid Clientes cliente) {
-		return clienteRepository.save(cliente);
+	public Cliente addClientes(@RequestBody @Valid Cliente clienteDto) {
+		return clienteRepository.save(clienteDto);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Clientes cliente){
-		Optional<Clientes> clienteOptional = clienteRepository.findById(id);
+	public ResponseEntity<Object> update(@PathVariable(name="id")long id, @RequestBody @Valid Cliente cliente){
+		Optional<Cliente> clienteOptional = clienteRepository.findById(id);
 		if (!clienteOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found");
 		}
 		
-		Clientes clienteUpdt = new Clientes();
+		Cliente clienteUpdt = new Cliente();
 		BeanUtils.copyProperties(cliente, clienteUpdt);
 		clienteUpdt.setId(clienteOptional.get().getId());
 		
@@ -68,7 +68,7 @@ public class ClientesController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePedido(@PathVariable(name="id")long id) {
-		Optional<Clientes> clienteOptional =clienteRepository.findById(id);
+		Optional<Cliente> clienteOptional =clienteRepository.findById(id);
 		if (!clienteOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found");
 		}

@@ -13,7 +13,7 @@ import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
 @Table(name="bebidas")
-public class Bebida {
+public class Bebida { //interessante
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -44,8 +44,8 @@ public class Bebida {
 	}
 
 
-	public String getImagem() {
-		return imagem;
+	public String getImagem() { //se eu n adicionar esse recurso de construção no get, eu n vou conseguir acessar pelo android
+		return "http://localhost:4200/" + imagem;
 	}
 
 	public void setImagem(String imagem) {

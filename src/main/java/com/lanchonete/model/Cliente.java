@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Clientes")
-public class Clientes {
+public class Cliente {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public class Clientes {
     @Column(name = "endereco_cliente")
     private String enderecoCliente;
 
-    public Clientes(){
+    public Cliente(){
 
     }
 
-    public Clientes(String nomeCliente, String cpfCliente , String enderecoCliente){
+    public Cliente(String nomeCliente, String cpfCliente , String enderecoCliente){
         super();
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;

@@ -20,12 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lanchonete.model.Bebida;
 import com.lanchonete.model.Salgado;
 import com.lanchonete.repository.SalgadoRepository;
 
 @RestController
-@CrossOrigin(origins="*", maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/salgados")
 public class SalgadoController {
 	@Autowired

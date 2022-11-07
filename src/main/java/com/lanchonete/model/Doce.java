@@ -44,7 +44,7 @@ public class Doce {
 	}
 
 	public String getImagem() {
-		return imagem;
+		return "http://localhost:4200/" + imagem;
 	}
 
 	public void setImagem(String imagem) {
