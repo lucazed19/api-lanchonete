@@ -32,7 +32,7 @@ public class Funcionario {
 	}
 
 	public String getImagem() {
-		return "http://localhost:4200/" + imagem;
+		return imagem;
 	}
 
 	public void setImagem(String imagem) {
